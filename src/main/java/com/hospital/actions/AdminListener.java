@@ -155,6 +155,9 @@ public class AdminListener {
     
             handleRedirect(response, statusCode, "empmgmt.jsp");
 
+        }
+    }
+
             
     public void updateEmployee(HttpServletRequest request, HttpServletResponse response) {
 
