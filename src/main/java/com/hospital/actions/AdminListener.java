@@ -152,22 +152,35 @@ public class AdminListener {
 
             System.out.println("Status Code:" + statusCode);
 
-            if (statusCode == 0) {
-                response.sendRedirect("empmgmt.jsp?error=true");
-            } else {
-                response.sendRedirect("empmgmt.jsp?add=true");
-            }
+           handleRedirect(response, statusCode, "empmgmt.jsp");
 
-        } catch (Exception ex) {
-            try {
-                response.sendRedirect("empmgmt.jsp?error=true");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            ex.printStackTrace();
-        }
+        } 
+        catch (Exception ex) {
+            handleErrorRedirect(response, "empmgmt.jsp", ex);
+    }
         return statusCode;
     }
+
+    private void handleRedirect(HttpServletResponse response, int statusCode, String pageName) {
+    try {
+        if (statusCode == 0) {
+            response.sendRedirect(pageName + "?error=true");
+        } else {
+            response.sendRedirect(pageName + "?add=true");
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    }
+    private void handleErrorRedirect(HttpServletResponse response, String pageName, Exception ex) {
+    try {
+        response.sendRedirect(pageName + "?error=true");
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    ex.printStackTrace();
+    }
+
 
     public void updateEmployee(HttpServletRequest request, HttpServletResponse response) {
 
@@ -312,20 +325,12 @@ public class AdminListener {
 
             int statusCode = adminDAO.saveObject(room);
 
-            if (statusCode == 0) {
-                response.sendRedirect("mgmtroom.jsp?error=true");
-            } else {
-                response.sendRedirect("mgmtroom.jsp?add=true");
-            }
+            handleRedirect(response, statusCode, "mgmtroom.jsp");
 
-        } catch (Exception ex) {
-            try {
-                response.sendRedirect("mgmtroom.jsp?error=true");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            ex.printStackTrace();
         }
+        catch (Exception ex) {
+    handleErrorRedirect(response, "mgmtroom.jsp", ex);
+    }
 
     }
 
