@@ -152,22 +152,7 @@ public class AdminListener {
 
             System.out.println("Status Code:" + statusCode);
 
-    //         if (statusCode == 0) {
-    //             response.sendRedirect("empmgmt.jsp?error=true");
-    //         } else {
-    //             response.sendRedirect("empmgmt.jsp?add=true");
-    //         }
-
-    //     } catch (Exception ex) {
-    //         try {
-    //             response.sendRedirect("empmgmt.jsp?error=true");
-    //         } catch (IOException e) {
-    //             e.printStackTrace();
-    //         }
-    //         ex.printStackTrace();
-    //     }
-    //     return statusCode;
-    // }
+    
             handleRedirect(response, statusCode, "empmgmt.jsp");
 
             
@@ -314,20 +299,6 @@ public class AdminListener {
 
             int statusCode = adminDAO.saveObject(room);
 
-        //     if (statusCode == 0) {
-        //         response.sendRedirect("mgmtroom.jsp?error=true");
-        //     } else {
-        //         response.sendRedirect("mgmtroom.jsp?add=true");
-        //     }
-
-        // } catch (Exception ex) {
-        //     try {
-        //         response.sendRedirect("mgmtroom.jsp?error=true");
-        //     } catch (IOException e) {
-        //         e.printStackTrace();
-        //     }
-        //     ex.printStackTrace();
-        // }
 
         handleRedirect(response, statusCode, "mgmtroom.jsp");
 
